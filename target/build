@@ -1,0 +1,72 @@
+{
+  "last_build_time": 1788514854938,
+  "last_update_time": 1788514854938,
+  "last_bal_toml_update_time": 1788508190493,
+  "distribution_version": "2201.13.5-20260805-221500-37884cac",
+  "last_modified_time": {
+    "rental_service": 1788514787053
+  },
+  "last_build_options": {
+    "compilationOptions": {
+      "observabilityIncluded": true,
+      "dumpBir": false,
+      "cloud": "",
+      "dumpGraph": false,
+      "dumpRawGraphs": false
+    }
+  },
+  "src_meta_info": [
+    {
+      "file": "C:\\Users\\Admin\\Downloads\\DSA612S_Assignments_Full_Bundle (1)\\Assignment1_q2\\Ballerina.toml",
+      "hash": "a4f115f8bc1418ffe15ecbe60fc509d33b781b146a5737a4e71102145ea5f783",
+      "size": 207,
+      "lastModifiedTime": 1788508190493
+    },
+    {
+      "file": "C:\\Users\\Admin\\Downloads\\DSA612S_Assignments_Full_Bundle (1)\\Assignment1_q2\\rental_client.bal",
+      "hash": "a920eafc14631aa5c84f1d89e07f32474cac8fd4d68ebf171cd6bd23a99bf30a",
+      "size": 2556,
+      "lastModifiedTime": 1788501130815
+    },
+    {
+      "file": "C:\\Users\\Admin\\Downloads\\DSA612S_Assignments_Full_Bundle (1)\\Assignment1_q2\\rental_service.bal",
+      "hash": "41f46635b618cba020b4b43c4ad8878c59ed79034b9e68d958d4fbe8edaf9e37",
+      "size": 13175,
+      "lastModifiedTime": 1788514787053
+    },
+    {
+      "file": "C:\\Users\\Admin\\Downloads\\DSA612S_Assignments_Full_Bundle (1)\\Assignment1_q2\\rental_service_pb.bal",
+      "hash": "fe52d9dd04baf263d76af0c5bc0d24bbd6cd28a5c0ffb8a98f0ec33b362d7d8a",
+      "size": 32329,
+      "lastModifiedTime": 1788499755660
+    }
+  ],
+  "target_exec_meta_info": {
+    "file": "C:\\Users\\Admin\\Downloads\\DSA612S_Assignments_Full_Bundle (1)\\Assignment1_q2\\target\\backup\\bin\\rental_service.jar",
+    "hash": "10a0006420e9e866b8504927f92f7d328fceb82492d3318c92db1c1d2ad0f38b",
+    "size": 48575407,
+    "lastModifiedTime": 1788514868312
+  },
+  "settings_meta_info": {
+    "file": "C:\\Users\\Admin\\.ballerina\\Settings.toml",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0,
+    "lastModifiedTime": 1753720843543
+  },
+  "ballerina_toml_meta_info": {
+    "file": "C:\\Users\\Admin\\Downloads\\DSA612S_Assignments_Full_Bundle (1)\\Assignment1_q2\\Ballerina.toml",
+    "hash": "a4f115f8bc1418ffe15ecbe60fc509d33b781b146a5737a4e71102145ea5f783",
+    "size": 207,
+    "lastModifiedTime": 1788508190493
+  },
+  "imports": [
+    "ballerina/lang.runtime",
+    "ballerina/time",
+    "ballerina/io",
+    "ballerina/sql",
+    "ballerinax/mysql",
+    "ballerinax/mysql.driver",
+    "ballerina/grpc",
+    "ballerina/protobuf"
+  ]
+}

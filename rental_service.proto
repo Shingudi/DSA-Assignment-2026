@@ -1,0 +1,142 @@
+// ============================================================================
+// NUST DSA612S - Assignment 1 Question 2: gRPC Rental Accommodation System
+// Protocol Buffer Contract (.proto)
+// ============================================================================
+
+syntax = "proto3";
+
+package rental;
+
+option java_multiple_files = true;
+option java_package = "com.nust.tourism.rental";
+
+service RentalService {
+    // 1. Add Property (Simple RPC)
+    rpc AddProperty (AddPropertyRequest) returns (AddPropertyResponse);
+
+    // 2. Create Users (Client-side Streaming)
+    rpc CreateUsers (stream UserProfile) returns (CreateUsersResponse);
+
+    // 3. Update Property (Simple RPC)
+    rpc UpdateProperty (UpdatePropertyRequest) returns (UpdatePropertyResponse);
+
+    // 4. Remove Property (Simple RPC)
+    rpc RemoveProperty (RemovePropertyRequest) returns (RemovePropertyResponse);
+
+    // 5. List Available Properties (Server-side Streaming)
+    rpc ListAvailableProperties (ListPropertiesRequest) returns (stream Property);
+
+    // 6. Search Property (Simple RPC)
+    rpc SearchProperty (SearchPropertyRequest) returns (SearchPropertyResponse);
+
+    // 7. Book Property (Simple RPC)
+    rpc BookProperty (BookPropertyRequest) returns (BookPropertyResponse);
+
+    // 8. Confirm Booking (Simple RPC)
+    rpc ConfirmBooking (ConfirmBookingRequest) returns (ConfirmBookingResponse);
+}
+
+enum UserRole {
+    HOST = 0;
+    GUEST = 1;
+}
+
+message UserProfile {
+    string user_id = 1;
+    string name = 2;
+    string email = 3;
+    UserRole role = 4;
+    string region = 5;
+}
+
+message Property {
+    string property_id = 1;
+    string host_id = 2;
+    string property_name = 3;
+    string location = 4;
+    string property_type = 5;
+    double price_per_night = 6;
+    string status = 7;
+    int32 max_guests = 8;
+}
+
+message AddPropertyRequest {
+    string host_id = 1;
+    string property_name = 2;
+    string location = 3;
+    string property_type = 4;
+    double price_per_night = 5;
+    string status = 6;
+}
+
+message AddPropertyResponse {
+    string property_id = 1;
+    string message = 2;
+}
+
+message CreateUsersResponse {
+    int32 total_users_registered = 1;
+    string status_message = 2;
+}
+
+message UpdatePropertyRequest {
+    string property_id = 1;
+    double new_price_per_night = 2;
+    string new_status = 3;
+}
+
+message UpdatePropertyResponse {
+    bool success = 1;
+    Property updated_property = 2;
+}
+
+message RemovePropertyRequest {
+    string property_id = 1;
+    string host_region = 2;
+}
+
+message RemovePropertyResponse {
+    bool success = 1;
+    repeated Property remaining_available_properties = 2;
+}
+
+message ListPropertiesRequest {
+    string location_filter = 1;
+    double max_price_filter = 2;
+}
+
+message SearchPropertyRequest {
+    string property_id = 1;
+}
+
+message SearchPropertyResponse {
+    bool available = 1;
+    Property property = 2;
+    string status_description = 3;
+}
+
+message BookPropertyRequest {
+    string guest_id = 1;
+    string property_id = 2;
+    string check_in_date = 3;  // YYYY-MM-DD
+    string check_out_date = 4; // YYYY-MM-DD
+}
+
+message BookPropertyResponse {
+    string cart_item_id = 1;
+    int32 number_of_nights = 2;
+    double estimated_total_cost = 3;
+    string status = 4;
+}
+
+message ConfirmBookingRequest {
+    string guest_id = 1;
+    string cart_item_id = 2;
+}
+
+message ConfirmBookingResponse {
+    string booking_id = 1;
+    bool confirmed = 2;
+    double total_cost = 3;
+    string confirmation_message = 4;
+}

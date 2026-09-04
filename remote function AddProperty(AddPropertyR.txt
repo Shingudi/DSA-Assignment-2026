@@ -1,0 +1,15 @@
+remote function AddProperty(AddPropertyRequest req) returns AddPropertyResponse|error {
+    string newId = "PROP-" + (propertiesTable.length() + 101).toString();
+
+    sql:ExecutionResult _ = check dbClient->execute(`
+        INSERT INTO property (property_id, host_id, property_name, location, property_type,
+                              price_per_night, status, max_guests)
+        VALUES (${newId}, ${req.host_id}, ${req.property_name}, ${req.location},
+                ${req.property_type}, ${req.price_per_night}, ${req.status}, 4)
+    `);
+
+    return {
+        property_id: newId,
+        message: "Property listed successfully!"
+    };
+}

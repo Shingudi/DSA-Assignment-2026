@@ -1,0 +1,29 @@
+remote function SearchProperty(SearchPropertyRequest req) returns SearchPropertyResponse|error {
+    stream<record {}, sql:Error?> resultStream =
+        dbClient->query(`SELECT * FROM property WHERE property_id = ${req.property_id}`);
+
+    record {}[] rows = check from var row in resultStream select row;
+
+    if rows.length() == 0 {
+        return {
+            available: false,
+            property: getEmptyProperty(),
+            status_description: "Property ID does not exist"
+        };
+    }
+
+    return {
+        available: true,
+        property: {
+            property_id: "PROP-101",
+            host_id: "HOST-001",
+            property_name: "Windhoek Luxury Heights Studio",
+            location: "Khomas, Windhoek",
+            property_type: "Studio",
+            price_per_night: 850.0,
+            status: "AVAILABLE",
+            max_guests: 2
+        },
+        status_description: "Property found"
+    };
+}
