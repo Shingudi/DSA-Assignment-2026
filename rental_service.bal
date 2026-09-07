@@ -120,7 +120,7 @@ service "RentalService" on new grpc:Listener(9091) {
     # + req - The property details supplied by the client.
     # + return - The generated property ID and a success message, or an error if creation fails.
     remote function AddProperty(AddPropertyRequest req) returns AddPropertyResponse|error {
-        string newId = "PROP-" + (propertiesTable.length() + 101).toString();
+        string newId = "PROP-" + time:utcNow()[0].toString();
 
         sql:ExecutionResult _ = check dbClient->execute(`
             INSERT INTO property (property_id, host_id, property_name, location, property_type,
@@ -189,6 +189,7 @@ service "RentalService" on new grpc:Listener(9091) {
         Property[] matches = [];
         foreach var p in propertiesTable {
             if (p.status == "AVAILABLE" && 
+                (req.location_filter == "" || p.location.includes(req.location_filter)) &&
                 (req.max_price_filter <= 0.0 || p.price_per_night <= req.max_price_filter)) {
                 matches.push(p);
             }
@@ -207,6 +208,14 @@ service "RentalService" on new grpc:Listener(9091) {
         record {}[] rows = check from var row in resultStream select row;
 
         if rows.length() == 0 {
+            if propertiesTable.hasKey(req.property_id) {
+                Property storedProperty = propertiesTable.get(req.property_id);
+                return {
+                    available: storedProperty.status == "AVAILABLE",
+                    property: storedProperty,
+                    status_description: "Property found in service catalog"
+                };
+            }
             return {
                 available: false,
                 property: getEmptyProperty(),
@@ -214,7 +223,15 @@ service "RentalService" on new grpc:Listener(9091) {
             };
         }
 
-        // map row to Property if needed
+        if propertiesTable.hasKey(req.property_id) {
+            Property storedProperty = propertiesTable.get(req.property_id);
+            return {
+                available: storedProperty.status == "AVAILABLE",
+                property: storedProperty,
+                status_description: "Property found"
+            };
+        }
+
         return {
             available: true,
             property: {

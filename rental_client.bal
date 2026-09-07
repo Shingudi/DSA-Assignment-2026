@@ -5,6 +5,7 @@
 
 import ballerina/io;
 import ballerina/lang.runtime;
+import ballerina/grpc;
 
 function connectToRentalService() returns RentalServiceClient|error {
     error? lastError = ();
@@ -39,25 +40,87 @@ function runClient() returns error? {
     });
     io:println("1. Add Property Response: ", addRes.message, " ID: ", addRes.property_id);
 
-    // 2. Search Property
-    SearchPropertyResponse searchRes = check rentalClient->SearchProperty({ property_id: "PROP-101" });
-    io:println("2. Search Property: ", searchRes.property.property_name, " Available: ", searchRes.available);
+    // 2. Create Users (client-side streaming)
+    CreateUsersStreamingClient usersStream = check rentalClient->CreateUsers();
+    check usersStream->sendUserProfile({
+        user_id: "HOST-003",
+        name: "Kalahari Host",
+        email: "host003@example.com",
+        role: HOST,
+        region: "Hardap"
+    });
+    check usersStream->sendUserProfile({
+        user_id: "GUEST-501",
+        name: "Rental Guest",
+        email: "guest501@example.com",
+        role: GUEST,
+        region: "Khomas"
+    });
+    check usersStream->complete();
+    var usersResult = usersStream->receiveCreateUsersResponse();
+    if usersResult is grpc:Error {
+        return usersResult;
+    }
+    if usersResult is () {
+        return error("CreateUsers returned no response");
+    }
+    CreateUsersResponse usersRes = usersResult;
+    io:println("2. Create Users: ", usersRes.status_message,
+        " Count: ", usersRes.total_users_registered);
 
-    // 3. Book Property
+    // 3. Update Property
+    UpdatePropertyResponse updateRes = check rentalClient->UpdateProperty({
+        property_id: "PROP-101",
+        new_price_per_night: 900.0,
+        new_status: "AVAILABLE"
+    });
+    io:println("3. Update Property: ", updateRes.success);
+
+    // 4. Remove Property
+    RemovePropertyResponse removeRes = check rentalClient->RemoveProperty({
+        property_id: "PROP-999",
+        host_region: "Khomas"
+    });
+    io:println("4. Remove Property: ", removeRes.success,
+        " Remaining: ", removeRes.remaining_available_properties.length());
+
+    // 5. Search Property
+    SearchPropertyResponse searchRes = check rentalClient->SearchProperty({ property_id: "PROP-101" });
+    io:println("5. Search Property: ", searchRes.property.property_name,
+        " Available: ", searchRes.available);
+
+    // 6. Book Property
     BookPropertyResponse bookRes = check rentalClient->BookProperty({
         guest_id: "GUEST-501",
         property_id: "PROP-101",
         check_in_date: "2026-08-01",
         check_out_date: "2026-08-04"
     });
-    io:println("3. Booked Property Cart ID: ", bookRes.cart_item_id, " Total Cost: N$", bookRes.estimated_total_cost);
+    io:println("6. Booked Property Cart ID: ", bookRes.cart_item_id,
+        " Total Cost: N$", bookRes.estimated_total_cost);
 
-    // 4. Confirm Booking
+    // 7. Confirm Booking
     ConfirmBookingResponse confirmRes = check rentalClient->ConfirmBooking({
         guest_id: "GUEST-501",
         cart_item_id: bookRes.cart_item_id
     });
-    io:println("4. Confirmed Booking ID: ", confirmRes.booking_id, " Message: ", confirmRes.confirmation_message);
+    io:println("7. Confirmed Booking ID: ", confirmRes.booking_id,
+        " Message: ", confirmRes.confirmation_message);
+
+    // 8. List Available Properties (server-side streaming)
+    var propertyStreamResult = rentalClient->ListAvailableProperties({
+        location_filter: "Windhoek",
+        max_price_filter: 2000.0
+    });
+    if propertyStreamResult is grpc:Error {
+        return propertyStreamResult;
+    }
+    stream<Property, grpc:Error?> propertyStream = propertyStreamResult;
+
+    check from var property in propertyStream
+        do {
+            io:println("8. Available property: ", property.property_name);
+        };
 }
 
 public function main() returns error? {

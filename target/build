@@ -1,15 +1,18 @@
 {
-  "last_build_time": 1788514854938,
-  "last_update_time": 1788514854938,
+  "last_build_time": 1788546921822,
+  "last_update_time": 1788546921822,
   "last_bal_toml_update_time": 1788508190493,
   "distribution_version": "2201.13.5-20260805-221500-37884cac",
   "last_modified_time": {
-    "rental_service": 1788514787053
+    "rental_service": 1788546881395
   },
   "last_build_options": {
+    "testReport": false,
+    "codeCoverage": false,
+    "skipTests": true,
     "compilationOptions": {
+      "experimental": false,
       "observabilityIncluded": true,
-      "dumpBir": false,
       "cloud": "",
       "dumpGraph": false,
       "dumpRawGraphs": false
@@ -24,15 +27,15 @@
     },
     {
       "file": "C:\\Users\\Admin\\Downloads\\DSA612S_Assignments_Full_Bundle (1)\\Assignment1_q2\\rental_client.bal",
-      "hash": "a920eafc14631aa5c84f1d89e07f32474cac8fd4d68ebf171cd6bd23a99bf30a",
-      "size": 2556,
-      "lastModifiedTime": 1788501130815
+      "hash": "86ddf444af272b46b51a49197cef09b2c96eeb6338cb9699d990341651396768",
+      "size": 4635,
+      "lastModifiedTime": 1788534413918
     },
     {
       "file": "C:\\Users\\Admin\\Downloads\\DSA612S_Assignments_Full_Bundle (1)\\Assignment1_q2\\rental_service.bal",
-      "hash": "41f46635b618cba020b4b43c4ad8878c59ed79034b9e68d958d4fbe8edaf9e37",
-      "size": 13175,
-      "lastModifiedTime": 1788514787053
+      "hash": "acdf47bd1c7eac64c678206ddc2f27a39500e423078b9caf699f64c0fdc765b7",
+      "size": 13931,
+      "lastModifiedTime": 1788546881395
     },
     {
       "file": "C:\\Users\\Admin\\Downloads\\DSA612S_Assignments_Full_Bundle (1)\\Assignment1_q2\\rental_service_pb.bal",
@@ -43,9 +46,9 @@
   ],
   "target_exec_meta_info": {
     "file": "C:\\Users\\Admin\\Downloads\\DSA612S_Assignments_Full_Bundle (1)\\Assignment1_q2\\target\\backup\\bin\\rental_service.jar",
-    "hash": "10a0006420e9e866b8504927f92f7d328fceb82492d3318c92db1c1d2ad0f38b",
-    "size": 48575407,
-    "lastModifiedTime": 1788514868312
+    "hash": "c50e19ea03f604856173d156092079675503754dd639da8f5de0bf38ca90d326",
+    "size": 48617100,
+    "lastModifiedTime": 1788546932148
   },
   "settings_meta_info": {
     "file": "C:\\Users\\Admin\\.ballerina\\Settings.toml",

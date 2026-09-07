@@ -30,3 +30,12 @@ CREATE TABLE booking (
     total_cost DOUBLE NOT NULL,
     status VARCHAR(50) NOT NULL
 );
+
+INSERT IGNORE INTO property (
+    property_id, host_id, property_name, location, property_type,
+    price_per_night, status, max_guests
+) VALUES
+    ('PROP-101', 'HOST-001', 'Windhoek Luxury Heights Studio', 'Khomas, Windhoek',
+     'Studio', 850.0, 'AVAILABLE', 2),
+    ('PROP-102', 'HOST-002', 'Swakopmund Ocean View Villa', 'Erongo, Swakopmund',
+     'Villa', 1850.0, 'AVAILABLE', 6);
