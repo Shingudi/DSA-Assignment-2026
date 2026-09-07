@@ -3,7 +3,7 @@ CREATE DATABASE rental_db;
 USE rental_db;
 
 CREATE TABLE property (
-    property_id VARCHAR(50) PRIMARY KEY,
+    asset_tag VARCHAR(50) PRIMARY KEY,
     host_id VARCHAR(50) NOT NULL,
     property_name VARCHAR(255) NOT NULL,
     location VARCHAR(255) NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE user_profile (
 CREATE TABLE booking (
     booking_id VARCHAR(50) PRIMARY KEY,
     guest_id VARCHAR(50) NOT NULL,
-    property_id VARCHAR(50) NOT NULL,
+    asset_tag VARCHAR(50) NOT NULL,
     check_in_date DATE NOT NULL,
     check_out_date DATE NOT NULL,
     total_cost DOUBLE NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE booking (
 );
 
 INSERT IGNORE INTO property (
-    property_id, host_id, property_name, location, property_type,
+    asset_tag, host_id, property_name, location, property_type,
     price_per_night, status, max_guests
 ) VALUES
     ('PROP-101', 'HOST-001', 'Windhoek Luxury Heights Studio', 'Khomas, Windhoek',
