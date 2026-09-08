@@ -8,7 +8,7 @@ dependencies-toml-version = "2"
 distribution-version = "2201.13.5-20260805-221500-37884cac"
 
 [[package]]
-org = "ballerina"
+org = "ballerina
 name = "auth"
 version = "2.14.0"
 dependencies = [
