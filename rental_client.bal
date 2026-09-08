@@ -11,7 +11,7 @@ function runClient() returns error? {
     http:Response updateResponse = check rentalService->put("/properties/PROP-101",
         {pricePerNight: 900, status: "AVAILABLE"});
     json updatedAsset = check updateResponse.getJsonPayload();
-    io:println("Updated asset: ", updatedAsset)
+    io:println("Updated asset: ", updatedAsset);
 
     UserProfile user = {
         userId: "GUEST-501",
