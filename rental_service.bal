@@ -7,7 +7,7 @@ import ballerina/http;
 import ballerina/time;
 
 type Asset record {| 
-    string assetTag
+    string assetTag;
     string hostId;
     string propertyName;
     string location;
