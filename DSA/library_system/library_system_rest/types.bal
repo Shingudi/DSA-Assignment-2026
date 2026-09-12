@@ -19,7 +19,7 @@ public type LoanRequest record {|
 public type Schedule record {|
     string scheduleId;
     string 'type; // Escapes the reserved keyword 'type' correctly using a single quote
-    string dueDate; // Expect ISO "yyyy-MM-dd"
+    string dueDate; // Expect ISO "yyyy-MM-dd" (date)
     string description;
 |};
 
