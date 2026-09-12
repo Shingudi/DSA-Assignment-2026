@@ -20,18 +20,19 @@ public function main() returns error? {
         io:println("\nSelect an option:");
         io:println("1) Loan an Asset");
         io:println("2) Book a Room/Lab");
-        io:println("3) Global View (All Assets)");
-        io:println("4) Campus View (Filter by Institution & Site)");
-        io:println("5) Overdue Dashboard");
-        io:println("6) Schedule Manager (Add Schedule)");
-        io:println("7) Exit");
+        io:println("3) Register an Asset");
+        io:println("4) Global View (All Assets)");
+        io:println("5) Campus View (Filter by Institution & Site)");
+        io:println("6) Overdue Dashboard");
+        io:println("7) Schedule Manager (Add Schedule)");
+        io:println("8) Exit");
 
-        string choice = io:readln("Enter choice (1-7): ");
+        string choice = io:readln("Enter choice (1-8): ");
         
         if choice == "1" || choice == "2" {
             string assetTag = io:readln("Asset tag to loan/book: ");
             string user = io:readln("User name: ");
-            string due = io:readln("Due date (yyyy-MM-dd): ");
+            string due = io:readln("Due date (YYYY-MM-DD): ");
             string desc = io:readln("Description: ");
 
             json requestPayload = {
@@ -49,6 +50,32 @@ public function main() returns error? {
             }
         } 
         else if choice == "3" {
+            io:println("\n--- Register Asset ---");
+            string assetTag = io:readln("Asset tag: ");
+            string name = io:readln("Asset name: ");
+            string description = io:readln("Description: ");
+            string institution = io:readln("Institution: ");
+            string site = io:readln("Campus/site: ");
+            string status = io:readln("Status (AVAILABLE/UNDER_MAINTENANCE/DISPOSED): ");
+            string dateAcquired = io:readln("Date acquired (yyyy-MM-dd): ");
+
+            json assetPayload = {
+                assetTag: assetTag,
+                name: name,
+                description: description,
+                institution: institution,
+                site: site,
+                status: status,
+                dateAcquired: dateAcquired,
+                components: [],
+                schedules: [],
+                workOrders: []
+            };
+
+            http:Response|error postRes = httpClient->post("/api/assets", assetPayload);
+            printRequestResult("Register asset", postRes);
+        }
+        else if choice == "4" {
             http:Response|error getRes = httpClient->get("/api/assets");
             if getRes is http:Response {
                 io:println("\n--- Global View Dashboard ---");
@@ -59,7 +86,7 @@ public function main() returns error? {
                 printRequestResult("Global view", getRes);
             }
         } 
-        else if choice == "4" {
+        else if choice == "5" {
             string inst = io:readln("Enter Institution Name: ");
             string site = io:readln("Enter Campus Site: ");
             // Fixed connection string matching the query specifications
@@ -73,7 +100,7 @@ public function main() returns error? {
                 printRequestResult("Campus view", getRes);
             }
         } 
-        else if choice == "5" {
+        else if choice == "6" {
             http:Response|error getRes = httpClient->get("/api/dashboard/overdue");
             if getRes is http:Response {
                 io:println("\n--- Overdue Dashboard Notification List ---");
@@ -84,7 +111,7 @@ public function main() returns error? {
                 printRequestResult("Overdue dashboard", getRes);
             }
         } 
-        else if choice == "6" {
+        else if choice == "7" {
             string assetTag = io:readln("Enter Asset Tag: ");
             string schedId = io:readln("Enter Schedule ID: ");
             string action = io:readln("Enter A to add or U to update: ");
@@ -110,7 +137,7 @@ public function main() returns error? {
                 printRequestResult("Schedule manager", postRes);
             }
         } 
-        else if choice == "7" {
+        else if choice == "8" {
             io:println("Exiting Console Dashboard. Goodbye!");
             break;
         }
