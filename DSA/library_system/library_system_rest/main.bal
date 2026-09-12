@@ -34,7 +34,7 @@ service /api on backendEP {
         return assets.get(assetTag);
     }
 
-    // POST: Create Asset
+    // POST: Create Assets
     resource function post assets(Asset newAsset) returns http:Created|http:Conflict {
         if assets.hasKey(newAsset.assetTag) {
             return http:CONFLICT;
