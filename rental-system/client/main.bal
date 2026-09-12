@@ -1,8 +1,6 @@
-// =============================================================================
+
 //  main.bal  (client package)
-//
 //  End-to-end demo of the RentalService.
-//
 //  This script exercises all 8 RPCs in a logical order:
 //
 //    1. create_users               (client streaming) — register a host + guest
@@ -13,8 +11,6 @@
 //    6. book_property              — guest books a date range
 //    7. confirm_booking            — guest confirms the booking
 //    8. remove_property            — host removes one property
-// =============================================================================
-
 import ballerina/io;
 
 // The gRPC server endpoint
@@ -23,10 +19,8 @@ final RentalServiceClient rentalClient = check new ("http://localhost:9090");
 public function main() returns error? {
     io:println("================ RentalService Client Demo ================");
 
-    // -------------------------------------------------------------------------
     // Step 1 — create_users (client streaming)
     // Register 1 HOST and 1 GUEST. Capture their assigned user_ids.
-    // -------------------------------------------------------------------------
     io:println("\n[1] create_users (client streaming)");
 
     Create_usersStreamingClient userStream = check rentalClient->create_users();
@@ -61,9 +55,7 @@ public function main() returns error? {
     io:println("    hostId  = ", hostId);
     io:println("    guestId = ", guestId);
 
-    // -------------------------------------------------------------------------
     // Step 2 — add_property (unary, called twice)
-    // -------------------------------------------------------------------------
     io:println("\n[2] add_property (twice)");
 
     AddPropertyResponse add1 = check rentalClient->add_property({
@@ -87,9 +79,7 @@ public function main() returns error? {
     string propId1 = add1.property_id;
     string propId2 = add2.property_id;
 
-    // -------------------------------------------------------------------------
     // Step 3 — search_property (unary)
-    // -------------------------------------------------------------------------
     io:println("\n[3] search_property");
 
     SearchPropertyResponse search = check rentalClient->search_property({
@@ -104,10 +94,8 @@ public function main() returns error? {
     });
     io:println("    Not-found case: ", notFound.found, " — ", notFound.status_message);
 
-    // -------------------------------------------------------------------------
     // Step 4 — update_property (unary, partial)
     // Change the price of property #1
-    // -------------------------------------------------------------------------
     io:println("\n[4] update_property (partial update)");
 
     UpdatePropertyResponse upd = check rentalClient->update_property({
@@ -117,9 +105,7 @@ public function main() returns error? {
     io:println("    Updated: ", upd.property.name, " — new price: ",
                upd.property.price_per_night);
 
-    // -------------------------------------------------------------------------
     // Step 5 — list_available_properties (server streaming)
-    // -------------------------------------------------------------------------
     io:println("\n[5] list_available_properties (server streaming)");
 
     stream<Property, error?> propStream = check rentalClient->list_available_properties({});
@@ -131,10 +117,8 @@ public function main() returns error? {
     });
     io:println("    Total streamed: ", propCount);
 
-    // -------------------------------------------------------------------------
     // Step 6 — book_property (unary)
     // Guest books property #1 for a 3-night stay
-    // -------------------------------------------------------------------------
     io:println("\n[6] book_property");
 
     BookPropertyResponse book = check rentalClient->book_property({
@@ -147,9 +131,7 @@ public function main() returns error? {
 
     string bookingId = book.booking_id;
 
-    // -------------------------------------------------------------------------
     // Step 7 — confirm_booking (unary)
-    // -------------------------------------------------------------------------
     io:println("\n[7] confirm_booking");
 
     ConfirmBookingResponse confirm = check rentalClient->confirm_booking({
@@ -160,10 +142,8 @@ public function main() returns error? {
     io:println("    Total:    ", confirm.booking.total_cost);
     io:println("    Message:  ", confirm.message);
 
-    // -------------------------------------------------------------------------
     // Step 8 — remove_property (unary)
     // Host removes the second property
-    // -------------------------------------------------------------------------
     io:println("\n[8] remove_property");
 
     RemovePropertyResponse rem = check rentalClient->remove_property({
