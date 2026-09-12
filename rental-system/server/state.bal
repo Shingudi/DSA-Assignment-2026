@@ -1,12 +1,8 @@
-// =============================================================================
 //  state.bal
-//
 //  In-memory data store for the Rental Accommodation System.
-//
 //  This file declares:
 //    - The internal record types (our domain model)
 //    - The module-level maps that hold all runtime state
-//
 //  NOTE:
 //    - Internal records are DELIBERATELY separate from the proto-generated
 //      records (Property, User, Booking in rental_pb.bal). This keeps the
@@ -14,11 +10,8 @@
 //    - Enums (PropertyStatus, UserRole, BookingStatus) are reused directly
 //      from the proto-generated code because they are simple value types
 //      with no behaviour — duplicating them would be pointless.
-// =============================================================================
 
-// -----------------------------------------------------------------------------
 //  Internal record types
-// -----------------------------------------------------------------------------
 
 # Represents a property listing stored on the server.
 # + property_id     - Unique identifier (UUID) for the property
@@ -72,14 +65,12 @@ type BookingRecord record {|
     BookingStatus status;
 |};
 
-// -----------------------------------------------------------------------------
 //  Module-level state
 //
 //  These maps live for the lifetime of the server process. They are the
 //  "database". Concurrent access is safe for reads; the only critical
 //  section we protect is the confirm_booking path (see the lock statement
 //  in rentalservice_service.bal).
-// -----------------------------------------------------------------------------
 
 # All property listings, keyed by property_id.
 map<PropertyRecord> properties = {};
