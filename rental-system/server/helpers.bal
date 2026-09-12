@@ -1,22 +1,16 @@
-// =============================================================================
 //  helpers.bal
-//
 //  Utility functions used by the RPC service implementation.
-//
 //  Categories:
 //    1. ID generation
 //    2. Date validation and arithmetic
 //    3. Booking overlap logic
 //    4. Property filtering
 //    5. Internal-record  ->  proto-message  conversions
-// =============================================================================
 
 import ballerina/time;
 import ballerina/uuid;
 
-// -----------------------------------------------------------------------------
 //  1. ID generation
-// -----------------------------------------------------------------------------
 
 # Generates a new random UUID string.
 # Used for property_id, user_id, and booking_id.
@@ -26,9 +20,7 @@ function newId() returns string {
     return uuid:createType1AsString();
 }
 
-// -----------------------------------------------------------------------------
 //  2. Date validation and arithmetic
-// -----------------------------------------------------------------------------
 
 # Regex that matches exactly the ISO date format "YYYY-MM-DD".
 final string:RegExp ISO_DATE_REGEX = re `^\d{4}-\d{2}-\d{2}$`;
@@ -61,9 +53,7 @@ function nightsBetween(string checkIn, string checkOut) returns int {
     return <int>(diffSeconds / 86400d);
 }
 
-// -----------------------------------------------------------------------------
 //  3. Booking overlap logic
-// -----------------------------------------------------------------------------
 
 # Checks whether two bookings overlap in time.
 #
@@ -108,9 +98,7 @@ function isPropertyFree(string propertyId, string checkIn, string checkOut) retu
     return true;
 }
 
-// -----------------------------------------------------------------------------
 //  4. Property filtering
-// -----------------------------------------------------------------------------
 
 # Returns all property records in the given region.
 #
@@ -122,9 +110,7 @@ function propertiesInRegion(string region) returns PropertyRecord[] {
            select p;
 }
 
-// -----------------------------------------------------------------------------
 //  5. Conversions: internal records -> proto messages
-// -----------------------------------------------------------------------------
 
 # Converts an internal PropertyRecord to a proto Property message.
 #
