@@ -1,0 +1,78 @@
+{
+  "last_build_time": 1789150922456,
+  "last_update_time": 1789150922456,
+  "last_bal_toml_update_time": 1789150570190,
+  "distribution_version": "2201.13.5-20260805-221500-37884cac",
+  "last_modified_time": {
+    "client": 1789150570304
+  },
+  "last_build_options": {
+    "testReport": false,
+    "codeCoverage": false,
+    "skipTests": true,
+    "compilationOptions": {
+      "experimental": false,
+      "observabilityIncluded": true,
+      "cloud": "",
+      "dumpGraph": false,
+      "dumpRawGraphs": false
+    }
+  },
+  "src_meta_info": [
+    {
+      "file": "C:\\Users\\Admin\\Downloads\\rental-system\\client\\Ballerina.toml",
+      "hash": "fd6fc925e6d3366d095219b29e8b57d4bd55888ec12a4dd63f0a60419421e287",
+      "size": 138,
+      "lastModifiedTime": 1789150570190
+    },
+    {
+      "file": "C:\\Users\\Admin\\Downloads\\rental-system\\client\\main.bal",
+      "hash": "cbfe86701d522c9393a4493b7858dc841ef84e0734815e69ffe5ae159eadba0f",
+      "size": 7658,
+      "lastModifiedTime": 1789150570238
+    },
+    {
+      "file": "C:\\Users\\Admin\\Downloads\\rental-system\\client\\rentalservice_client.bal",
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0,
+      "lastModifiedTime": 1789150570257
+    },
+    {
+      "file": "C:\\Users\\Admin\\Downloads\\rental-system\\client\\rental_pb.bal",
+      "hash": "061044a1670b73cc116258ea6f12c913e5b389afb5ea49eb89e856f5ebe8b066",
+      "size": 27420,
+      "lastModifiedTime": 1789150570279
+    }
+  ],
+  "target_exec_meta_info": {
+    "file": "C:\\Users\\Admin\\Downloads\\rental-system\\client\\target\\backup\\bin\\client.jar",
+    "hash": "2e3e6ab20b456f1f2695809200a338434c8035f829df6cf61ccf2c5a19121e61",
+    "size": 44272418,
+    "lastModifiedTime": 1789150929123
+  },
+  "settings_meta_info": {
+    "file": "C:\\Users\\Admin\\.ballerina\\Settings.toml",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0,
+    "lastModifiedTime": 1753720843543
+  },
+  "ballerina_toml_meta_info": {
+    "file": "C:\\Users\\Admin\\Downloads\\rental-system\\client\\Ballerina.toml",
+    "hash": "fd6fc925e6d3366d095219b29e8b57d4bd55888ec12a4dd63f0a60419421e287",
+    "size": 138,
+    "lastModifiedTime": 1789150570190
+  },
+  "resources_dir_meta_info": [
+    {
+      "file": "C:\\Users\\Admin\\Downloads\\rental-system\\client\\resources\\rental.proto",
+      "hash": "7c1abd6476502fbd42d2c6e0ebd9d183ce9e7d54ef585bb774610c513aaf370f",
+      "size": 5642,
+      "lastModifiedTime": 1789150570312
+    }
+  ],
+  "imports": [
+    "ballerina/io",
+    "ballerina/grpc",
+    "ballerina/protobuf"
+  ]
+}
