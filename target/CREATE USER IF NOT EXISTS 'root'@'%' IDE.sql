@@ -1,9 +1,0 @@
-CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY 'Lukas2004';
-
-ALTER USER 'root'@'%' IDENTIFIED BY 'Lukas2004';
-
-GRANT ALL PRIVILEGES ON rental_db.* TO 'root'@'%';
-
-FLUSH PRIVILEGES;
-
-exit

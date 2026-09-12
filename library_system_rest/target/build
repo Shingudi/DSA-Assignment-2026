@@ -1,0 +1,58 @@
+{
+  "last_build_time": 1788886053858,
+  "last_update_time": 1788886053858,
+  "last_bal_toml_update_time": 1788882585455,
+  "distribution_version": "2201.13.4",
+  "last_modified_time": {
+    "library_system_rest": 1788885850122
+  },
+  "last_build_options": {
+    "compilationOptions": {
+      "dumpBir": false,
+      "dumpGraph": false,
+      "dumpRawGraphs": false
+    }
+  },
+  "src_meta_info": [
+    {
+      "file": "C:\\Users\\Slick-Thug\\Desktop\\DSA\\library_system_rest\\Ballerina.toml",
+      "hash": "8fe05be78e66bb373f580d20ada7939a4b1dd6b19821c99a67ffc874a20a1f9f",
+      "size": 109,
+      "lastModifiedTime": 1788882585455
+    },
+    {
+      "file": "C:\\Users\\Slick-Thug\\Desktop\\DSA\\library_system_rest\\main.bal",
+      "hash": "d5e1f66e10a6b47b580883414ae2479f546cf7fb4f5dba83b2dbf9ac91db7590",
+      "size": 9444,
+      "lastModifiedTime": 1788885850122
+    },
+    {
+      "file": "C:\\Users\\Slick-Thug\\Desktop\\DSA\\library_system_rest\\types.bal",
+      "hash": "8dc54968eacc24b0762a04879c73a9d270b6db9b6b10c25d39679e20b5e15f78",
+      "size": 1115,
+      "lastModifiedTime": 1788883547162
+    }
+  ],
+  "target_exec_meta_info": {
+    "file": "C:\\Users\\Slick-Thug\\Desktop\\DSA\\library_system_rest\\target\\backup\\bin\\library_system_rest.jar",
+    "hash": "9d76a5b32a0de864bc9543e140abe66e35229212c4651aae055d27102572aa6b",
+    "size": 47821902,
+    "lastModifiedTime": 1788886062305
+  },
+  "settings_meta_info": {
+    "file": "C:\\Users\\Slick-Thug\\.ballerina\\Settings.toml",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0,
+    "lastModifiedTime": 1786556574457
+  },
+  "ballerina_toml_meta_info": {
+    "file": "C:\\Users\\Slick-Thug\\Desktop\\DSA\\library_system_rest\\Ballerina.toml",
+    "hash": "8fe05be78e66bb373f580d20ada7939a4b1dd6b19821c99a67ffc874a20a1f9f",
+    "size": 109,
+    "lastModifiedTime": 1788882585455
+  },
+  "imports": [
+    "ballerina/http",
+    "ballerina/time"
+  ]
+}
