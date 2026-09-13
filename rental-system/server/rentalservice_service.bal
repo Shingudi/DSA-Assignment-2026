@@ -6,18 +6,18 @@ listener grpc:Listener ep = new (9090);
 service "RentalService" on ep {
 
         remote function add_property(AddPropertyRequest value) returns AddPropertyResponse|error {
-        // 1. Host must exist
+        // 1. Host must exist.
         UserRecord? host = users[value.host_id];
         if host is () {
             return error grpc:NotFoundError("Host not found: " + value.host_id);
         }
 
-        // 2. Price must be positive
+        // 2. Price must be positive.
         if value.price_per_night <= 0.0 {
             return error grpc:InvalidArgumentError("Price per night must be positive");
         }
 
-        // 3. Generate a new property_id
+        // 3. Generate a new property_id.
         string propertyId = newId();
 
         // 4. Build the internal record — status forced to AVAILABLE,
