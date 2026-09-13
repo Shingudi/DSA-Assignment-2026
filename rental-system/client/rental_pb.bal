@@ -6,7 +6,7 @@ public const string RENTAL_DESC = "0A167265736F75726365732F72656E74616C2E70726F7
 public isolated client class RentalServiceClient {
     *grpc:AbstractClientEndpoint;
 
-    
+    private final grpc:Client grpcClient;
 
     public isolated function init(string url, *grpc:ClientConfiguration config) returns grpc:Error? {
         self.grpcClient = check new (url, config);
