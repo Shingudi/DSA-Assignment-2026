@@ -1,13 +1,4 @@
-import ballerina/http;
-import ballerina/io;
 
-function printRequestResult(string action, http:Response|error result) {
-    if result is http:Response {
-        io:println(action, " HTTP status: ", result.statusCode);
-    } else {
-        io:println(action, " failed: ", result.message());
-    }
-}
 
 public function main() returns error? {
     // Connect directly to the base backend URL
