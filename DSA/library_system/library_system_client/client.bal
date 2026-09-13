@@ -5,7 +5,7 @@ function printRequestResult(string action, http:Response|error result) {
     if result is http:Response {
         io:println(action, " HTTP status: ", result.statusCode);
     } else {
-        io:println(action, " failed: ", result.message()):
+        io:println(action, " failed: ", result.message());
     }
 }
 
