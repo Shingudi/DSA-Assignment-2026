@@ -1,4 +1,4 @@
-import ballerina/http:
+import ballerina/http;
 import ballerina/time;
 
 // In-memory data store using correct table layouts
