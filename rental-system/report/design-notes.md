@@ -8,4 +8,4 @@ Distributed system using gRPC and Ballerina for short-term rental management.
 - Guest: browses, searches, books
 
 ## Decisions Log
-(we'll append to this as we go)
+
