@@ -20,7 +20,7 @@ public isolated client class RentalServiceClient {
             message = req.content;
             headers = req.headers;
         } else {
-            message = req;
+            
         }
         var payload = check self.grpcClient->executeSimpleRPC("rental.RentalService/add_property", message, headers);
         [anydata, map<string|string[]>] [result, _] = payload;
