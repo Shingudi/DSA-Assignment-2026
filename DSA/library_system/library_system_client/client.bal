@@ -83,7 +83,7 @@ public function main() returns error? {
                 json payload = check getRes.getJsonPayload();
                 io:println(payload);
             } else {
-                printRequestResult("Global view", getRes);
+                
             }
         } 
         else if choice == "5" {
