@@ -35,8 +35,8 @@ message Property {
   string         location        = 4;   // e.g. "Colombo 03"
   string         region          = 5;   // e.g. "Western Province"
   string         property_type   = 6;
-  double         price_per_night = 7;
-  PropertyStatus status          = 8;
+  double         price_per_night = 7;  // Price charged per night
+  PropertyStatus status          = 8;  // Current availability status
 }
 
 message User {
