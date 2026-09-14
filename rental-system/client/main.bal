@@ -13,7 +13,7 @@
 //    8. remove_property            — host removes one property
 import ballerina/io;
 
-// The gRPC server endpoint
+// Connect to the local gRPC rental service
 final RentalServiceClient rentalClient = check new ("http://localhost:9090");
 
 public function main() returns error? {
