@@ -7,7 +7,7 @@ service "RentalService" on ep {
 
         remote function add_property(AddPropertyRequest value) returns AddPropertyResponse|error {
         // 1. Host must exist.
-        UserRecord? host = users[value.host_id];
+        UserRecord? host = users[value.host_id]
         if host is () {
             return error grpc:NotFoundError("Host not found: " + value.host_id);
         }
