@@ -15,7 +15,7 @@ service /api/admin on adminListener {
         log:printInfo("Admin Analytics Microservice initialized on port 9097");
     };
 
-    // Generate comprehensive system metrics & SLA report
+    // Create comprehensive system metrics & SLA report
     resource function get metrics() returns SystemMetrics {
         RestaurantStatistic r1 = {
             restaurantId: "rest-001",
