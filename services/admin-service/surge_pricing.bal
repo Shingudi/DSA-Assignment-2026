@@ -5,7 +5,7 @@ public function calculateDynamicSurgeMultiplier(int pendingOrders, int available
         return 2.0d; // Max surge cap when there are no free drivers
     }
 
-    decimal ratio = <decimal>pendingOrders / <decimal>availableDrivers;
+    decimal ratio = <decimal>pendingOrders / <decimal>availableDrivers; // list
 
     if ratio <= 1.0d {
         return 1.0d; // Normal baseline 
