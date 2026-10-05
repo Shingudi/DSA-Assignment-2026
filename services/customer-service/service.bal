@@ -3,7 +3,7 @@
 import ballerina/http;
 import ballerina/log;
 import ballerina/time;
-import ballerina/uuid;
+import ballerina/uuid; //Unique identifiers
 
 // In-memory persistent map (backed by MongoDB in production deployment)
 final map<Customer> customerStore = {};
