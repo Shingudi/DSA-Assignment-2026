@@ -17,10 +17,7 @@ final kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, {
 listener http:Listener restaurantListener = new(9092);
 
 @http:ServiceConfig {
-    cors: {
-        allowOrigins: ["*"],
-        allowMethods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-        allowHeaders: ["*"]
+   acks: "all"
     }
 }
 service /api/restaurants on restaurantListener {
