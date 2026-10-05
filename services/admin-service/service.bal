@@ -70,7 +70,7 @@ service /api/admin on adminListener {
         return {
             'service: "admin-service",
             status: "UP",
-            timestamp: time:utcToString(time:utcNow())
+            timestamp: time:utcToString(time:utcNow()) //Proper time format
         };
     }
 }
