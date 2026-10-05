@@ -5,12 +5,7 @@
 db = db.getSiblingDB('food_delivery_db');
 
 // Create collections
-db.createCollection('customers');
-db.createCollection('restaurants');
-db.createCollection('orders');
-db.createCollection('payments');
-db.createCollection('deliveries');
-db.createCollection('notifications');
+
 
 // Indexes for high concurrency & fast lookups
 db.customers.createIndex({ "email": 1 }, { unique: true });
