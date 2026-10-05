@@ -1,0 +1,7 @@
+# Ballerina build artifacts
+target/
+*.jar
+*.bir
+
+# VS Code
+.vscode/
