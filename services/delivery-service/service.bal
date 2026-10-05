@@ -23,7 +23,7 @@ service /api/delivery on deliveryListener {
 
     function init() {
         log:printInfo("Delivery Microservice initialized on port 9095");
-        self.seedWindhoekDrivers();
+        self;seedWindhoekDrivers();
     }
 
     function seedWindhoekDrivers() {
