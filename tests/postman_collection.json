@@ -1,0 +1,45 @@
+{
+  "info": {
+    "name": "NUST DSA612S Food Delivery Platform Collection",
+    "description": "Postman API testing collection for 7 Ballerina Microservices",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Customer Service",
+      "item": [
+        {"name": "Get Customer Profile", "request": {"method": "GET", "url": "http://localhost:9091/api/customers/cust-001"}},
+        {"name": "Get Customer History", "request": {"method": "GET", "url": "http://localhost:9091/api/customers/cust-001/history"}}
+      ]
+    },
+    {
+      "name": "Restaurant Service",
+      "item": [
+        {"name": "List Restaurants", "request": {"method": "GET", "url": "http://localhost:9092/api/restaurants"}},
+        {"name": "Mark Order Ready", "request": {"method": "POST", "url": "http://localhost:9092/api/restaurants/rest-001/orders/ord-123/ready"}}
+      ]
+    },
+    {
+      "name": "Order Service",
+      "item": [
+        {"name": "Create Order", "request": {"method": "POST", "url": "http://localhost:9093/api/orders"}},
+        {"name": "Get Order", "request": {"method": "GET", "url": "http://localhost:9093/api/orders/ord-123"}},
+        {"name": "Transition Order Status", "request": {"method": "PATCH", "url": "http://localhost:9093/api/orders/ord-123/status"}}
+      ]
+    },
+    {
+      "name": "Delivery Service",
+      "item": [
+        {"name": "List Drivers", "request": {"method": "GET", "url": "http://localhost:9095/api/delivery/drivers"}},
+        {"name": "Assign Driver", "request": {"method": "POST", "url": "http://localhost:9095/api/delivery/assign"}}
+      ]
+    },
+    {
+      "name": "Admin Service",
+      "item": [
+        {"name": "Get Metrics & SLA", "request": {"method": "GET", "url": "http://localhost:9097/api/admin/metrics"}},
+        {"name": "Calculate Surge", "request": {"method": "GET", "url": "http://localhost:9097/api/admin/surge?pendingOrders=20&availableDrivers=5"}}
+      ]
+    }
+  ]
+}

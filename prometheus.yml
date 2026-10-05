@@ -1,0 +1,16 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'ballerina-microservices'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets:
+          - 'customer-service:9091'
+          - 'restaurant-service:9092'
+          - 'order-service:9093'
+          - 'payment-service:9094'
+          - 'delivery-service:9095'
+          - 'notification-service:9096'
+          - 'admin-service:9097'
