@@ -36,7 +36,7 @@ service /api/admin on adminListener {
         };
 
         DeliveryPerformanceReport deliveryReport = {
-            completedDeliveries: 236,
+            completedDeliveries: 226,
             averageDeliveryMinutes: 22.4d,
             onTimeRatePercentage: 96.8d,
             activeDriversCount: 18.0d,
