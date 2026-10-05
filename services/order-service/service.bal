@@ -6,7 +6,7 @@ import ballerina/time;
 import ballerina/uuid;
 import ballerinax/kafka;
 
-final map<Order> orderStore = {}
+final map<Order> orderStore = {};
 
 // Kafka Producer for emitting orders.created and orders.status_updated
 final kafka:Producer kafkaProducer = check new (kafka:DEFAULT_URL, {
