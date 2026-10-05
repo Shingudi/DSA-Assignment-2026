@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Namibia University of Science and Technology (NUST) - DSA612S
 # Topic Initialization Script for Apache Kafka
-# Defines key topics, 3 partitions for horizontal consumer scalability
+# Defines key topics, 3 partitions for horizontal consumer scalabiliyt
 
 set -e
 BOOTSTRAP_SERVER="localhost:29092"
