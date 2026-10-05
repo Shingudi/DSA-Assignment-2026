@@ -51,7 +51,7 @@ service /api/delivery on deliveryListener {
             currentOrderId: ()
         };
 
-        driverFleet[d1.id] = d1;
+        driverFleet[d1.id] = 1;
         driverFleet[d2.id] = d2;
     }
 
