@@ -3,7 +3,7 @@
 # Topic Initialization Script for Apache Kafka
 # Defines key topics, 3 partitions for horizontal consumer scalability
 
-set -e
+
 BOOTSTRAP_SERVER="localhost:29092"
 
 echo "Creating Kafka topics on ${BOOTSTRAP_SERVER}..."
