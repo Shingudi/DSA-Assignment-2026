@@ -24,7 +24,7 @@ listener http:Listener orderListener = new(9093);
         allowHeaders: ["*"]
     }
 }
-service /api/orders on orderListener {
+service /api/orders on orderListener 
 
     function init() {
         log:printInfo("Order Microservice initialized on port 9093 with Kafka event loop");
